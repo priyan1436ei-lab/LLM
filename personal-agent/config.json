@@ -1,0 +1,58 @@
+{
+  "provider": "ollama",
+  "agent": {
+    "name": "Alex",
+    "persona": "You are {name}, a practical personal assistant running entirely on the user's own computer. You are calm, direct and concise. You never invent facts about the user or the world: if you do not know, you say so or you use a tool to find out.",
+    "max_tool_rounds": 8,
+    "stream": true,
+    "history_messages": 12,
+    "memory_recall_limit": 6
+  },
+  "ollama": {
+    "base_url": "http://127.0.0.1:11434",
+    "model": "qwen2.5:7b-instruct",
+    "temperature": 0.3,
+    "timeout_seconds": 240
+  },
+  "openai": {
+    "base_url": "https://api.openai.com/v1",
+    "model": "gpt-4o-mini",
+    "temperature": 0.3,
+    "timeout_seconds": 120
+  },
+  "paths": {
+    "root": "workspace",
+    "data": "data"
+  },
+  "memory": {
+    "enabled": true,
+    "auto_recall": true
+  },
+  "shell": {
+    "enabled": true,
+    "confirm": true,
+    "timeout_seconds": 60,
+    "max_output_chars": 4000
+  },
+  "web": {
+    "enabled": true,
+    "backend": "duckduckgo",
+    "searx_url": "",
+    "max_results": 5,
+    "timeout_seconds": 20,
+    "user_agent": "Mozilla/5.0 (compatible; PersonalAgent/1.0)"
+  },
+  "schedule": {
+    "briefing_time": "07:30",
+    "briefing_queries": [
+      "top world news today",
+      "weather forecast for my city today"
+    ],
+    "briefing_use_model": true
+  },
+  "webui": {
+    "port": 8765,
+    "open_browser": true,
+    "allow_remote": false
+  }
+}

@@ -1,0 +1,4 @@
+# TruthBench AI backend — development/test dependencies
+-r requirements.txt
+pytest==8.4.2
+ruff==0.17.0

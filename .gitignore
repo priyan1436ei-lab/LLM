@@ -1,0 +1,33 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+
+# Local PGlite data directory (real Postgres data files, never committed)
+.data/
+*.pglite/
+
+# Local secrets. Only .env.example is committed.
+.env
+.env.local
+.env.*.local
+
+# Uploaded/user media must never be committed
+storage/
+public/uploads/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test output
+test-results/
+playwright-report/

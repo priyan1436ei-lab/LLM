@@ -1,0 +1,149 @@
+@import 'tailwindcss';
+
+/*
+ * FITTRACK AI design tokens (spec §95).
+ *
+ * The brief calls for "Dark Liquid Glass": a graphite base, layered translucent surfaces,
+ * subtle neon accents and restrained motion. Motion is opt-out aware: every transition is
+ * disabled under `prefers-reduced-motion` (spec §93). Focus states are always visible.
+ */
+
+@theme {
+  --color-graphite-950: #07090c;
+  --color-graphite-900: #0b0e13;
+  --color-graphite-850: #10141b;
+  --color-graphite-800: #151a23;
+  --color-graphite-700: #1e2532;
+  --color-graphite-600: #2a3342;
+  --color-graphite-500: #3b4658;
+
+  --color-mist-100: #eef2f8;
+  --color-mist-300: #c3ccdb;
+  --color-mist-500: #8a95a8;
+  --color-mist-600: #6b7688;
+
+  /* Neon accents, used sparingly for emphasis and data emphasis only. */
+  --color-neon-lime: #b6ff3c;
+  --color-neon-cyan: #35e0e8;
+  --color-neon-violet: #9d7bff;
+  --color-neon-amber: #ffb454;
+  --color-neon-rose: #ff6b81;
+
+  --radius-glass: 1.25rem;
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-graphite-950);
+    color: var(--color-mist-100);
+    font-family: var(--font-sans);
+    /* A barely-there aurora behind the glass layers. */
+    background-image:
+      radial-gradient(60rem 40rem at 12% -10%, rgba(53, 224, 232, 0.07), transparent 60%),
+      radial-gradient(50rem 34rem at 88% 0%, rgba(157, 123, 255, 0.08), transparent 62%),
+      radial-gradient(40rem 30rem at 50% 110%, rgba(182, 255, 60, 0.05), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* A single, consistent, always-visible focus ring (spec §93). */
+  :focus-visible {
+    outline: 2px solid var(--color-neon-cyan);
+    outline-offset: 2px;
+    border-radius: 0.375rem;
+  }
+
+  /* Honour the operating-system reduced-motion preference. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Screen-reader-only utility, for labels that must not be visible. */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+@layer components {
+  /* Layered translucent surface: the core of the liquid-glass language. */
+  .glass {
+    background: linear-gradient(
+      160deg,
+      rgb(255 255 255 / 0.06) 0%,
+      rgb(255 255 255 / 0.025) 45%,
+      rgb(255 255 255 / 0.012) 100%
+    );
+    backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgb(255 255 255 / 0.08);
+    border-radius: var(--radius-glass);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.06),
+      0 18px 44px -22px rgb(0 0 0 / 0.85);
+  }
+
+  .glass-raised {
+    background: linear-gradient(
+      160deg,
+      rgb(255 255 255 / 0.09) 0%,
+      rgb(255 255 255 / 0.04) 50%,
+      rgb(255 255 255 / 0.02) 100%
+    );
+    backdrop-filter: blur(22px) saturate(150%);
+    border: 1px solid rgb(255 255 255 / 0.11);
+    border-radius: var(--radius-glass);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.09),
+      0 24px 60px -26px rgb(0 0 0 / 0.9);
+  }
+
+  .accent-lime {
+    color: var(--color-neon-lime);
+  }
+  .accent-cyan {
+    color: var(--color-neon-cyan);
+  }
+  .accent-violet {
+    color: var(--color-neon-violet);
+  }
+
+  /* Small status pill, used for confidence bands and provenance labels. */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    padding: 0.125rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+    background: rgb(255 255 255 / 0.04);
+  }
+}

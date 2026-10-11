@@ -1,0 +1,10 @@
+# TruthBench AI backend — runtime dependencies (verified environment: Python 3.13.15, Windows 11)
+fastapi==0.143.0
+uvicorn[standard]==0.54.0
+sqlalchemy==2.0.54
+alembic==1.20.0
+pydantic==2.14.0
+pydantic-settings==2.15.0
+PyJWT==2.15.1
+httpx==0.28.1
+python-multipart==0.0.32

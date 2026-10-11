@@ -1,0 +1,14 @@
+# TruthBench AI backend — OPTIONAL machine-learning extras.
+# These packages are heavy and are NOT part of the verified local test environment.
+# They enable the optional SentenceTransformer semantic-similarity backend and
+# Hugging Face dataset tooling. Install separately (e.g. on a GPU/CI box):
+#   pip install -r requirements-ml.txt
+#
+# Version floors are known-good releases; this combination was not executed on the
+# development machine and is documented as untested-here.
+torch>=2.4.0
+transformers>=4.45.0
+sentence-transformers>=3.1.0
+datasets>=2.21.0
+scikit-learn>=1.5.0
+pyarrow>=17.0.0

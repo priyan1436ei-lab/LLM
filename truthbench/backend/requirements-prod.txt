@@ -1,0 +1,5 @@
+# TruthBench AI backend — production extras (used by docker-compose and the
+# production deployment guide). Not installed on the development machine.
+-r requirements.txt
+psycopg[binary]>=3.2.0
+redis>=5.0.0
